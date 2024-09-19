@@ -117,6 +117,11 @@ def main(args):
         converted_bbox = convert_to_yolo_format(bbox, width, height)
         bbox_dict[img_path].append(converted_bbox)
     
+    if error_rows:
+        import pickle
+        with open("./error_rows.pkl", "wb") as f:
+            pickle.dump(error_rows, f, pickle.HIGHEST_PROTOCOL)
+    
     print("make bbox_dict Done\n")
     
     # save with txt
