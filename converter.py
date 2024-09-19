@@ -23,11 +23,11 @@ def draw_with_label(image_path, bbox_info):
     elif isinstance(bbox_info, str) and os.path.isfile(bbox_info):
         with open(bbox_info, 'r') as f:
             label_datas = f.readlines()
-        label_datas = [list(map(float, x.strip().split(" ")))[1:] for x in label_datas]
+        bbox_info_list = [list(map(float, x.strip().split(" ")))[1:] for x in label_datas]
     else :
         raise Exception("invalid bbox_info")
     
-    for x_center, y_center, bbox_width, bbox_height in label_datas:
+    for x_center, y_center, bbox_width, bbox_height in bbox_info_list:
         x_center *= img_width
         y_center *= img_height
         bbox_width *= img_width
